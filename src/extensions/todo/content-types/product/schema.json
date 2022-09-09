@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "local": {
+      "type": "enumeration",
+      "enum": [
+        "Minha Casa",
+        "Estacionamento",
+        "Fabrício",
+        "Vinícius"
+      ],
+      "required": true
+    },
+    "price": {
+      "type": "float",
+      "required": true
+    },
+    "tax": {
+      "type": "boolean",
+      "required": false
+    },
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::todo.category",
+      "inversedBy": "products"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "priceTax": {
+      "type": "decimal"
+    },
+    "nameReceiver": {
+      "type": "enumeration",
+      "enum": [
+        "Léo",
+        "Vilma",
+        "Carlos",
+        "Fabrício",
+        "Vinícius"
+      ],
+      "required": true
+    },
+    "delivered": {
+      "type": "boolean",
+      "required": false
+    },
+    "nameBuyer": {
+      "type": "string"
+    }
+  }
+}

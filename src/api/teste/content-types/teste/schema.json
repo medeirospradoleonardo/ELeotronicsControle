@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testes",
+  "info": {
+    "singularName": "teste",
+    "pluralName": "testes",
+    "displayName": "teste",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "teste_2s": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::teste2.teste2",
+      "inversedBy": "testes"
+    }
+  }
+}
