@@ -1,12 +1,8 @@
 module.exports = {
     // ...
-    'rastreamento': {
+    'produtos': {
       enabled: true,
-      resolve: './src/plugins/rastreamento'
-    },
-    'todo': {
-      enabled: true,
-      resolve: './src/plugins/todo'
+      resolve: './src/plugins/produtos'
     },
     // ...
   }
