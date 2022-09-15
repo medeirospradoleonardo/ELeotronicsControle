@@ -16,8 +16,5 @@ module.exports = ({ env }) => ({
                 introspection: true,
             },
         }
-    },
-    ckeditor: {
-        enabled: true
     }
 });
