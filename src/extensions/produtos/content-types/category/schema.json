@@ -10,12 +10,11 @@
     "draftAndPublish": false
   },
   "pluginOptions": {
-    "content-manager": { 
+    "content-manager": {
       "visible": true
     },
-
     "content-type-builder": {
-      "visible": true
+      "visible": false
     }
   },
   "attributes": {

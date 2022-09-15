@@ -8,7 +8,7 @@ import {
 
 import {
   rastrearEncomendas,
-} from 'correios-brasil';
+} from '../../../../correios/lib/index';
 
 
 import { Box } from '@strapi/design-system/Box';
@@ -65,7 +65,12 @@ const HomePage = (props) => {
     let i = 0
     products.map((product) => {
       if (!product.delivered) {
-        product['status'] = rastreios[i].eventos[0].descricao
+        if(rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde"){
+          product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
+                              ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+        }else{
+          product['status'] = rastreios[i].eventos[0].descricao
+        }
         i++
       } else {
         product['status'] = "Objeto entregue ao destinatário"
