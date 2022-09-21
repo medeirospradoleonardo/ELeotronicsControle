@@ -7,5 +7,16 @@ module.exports = {
     } catch (err) {
       ctx.throw(500, err);
     }
-  }
+  },
+
+  async delivered(ctx) {
+    try {
+      ctx.body = await strapi
+        .plugin("produtos")
+        .service("product")
+        .delivered(ctx.params.id);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
 };

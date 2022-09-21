@@ -19,4 +19,14 @@ module.exports = [
     },
   },
 
+  {
+    method: "PUT",
+    path: "/product/delivered/:id",
+    handler: "product.delivered",
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
+
 ];

@@ -17,7 +17,9 @@ import PluginTable from "../../components/PluginTable";
 import { SimpleMenu, MenuItem } from '@strapi/design-system/SimpleMenu';
 
 const HomePage = (props) => {
-  const [filterAll, setFilterAll] = useState(false);
+  const [filterAll, setFilterAll] = useState(true);
+  const [filterDelivered, setFilterDelivered] = useState(true);
+  const [filterNoBuyer, setFilterNoBuyer] = useState(false);
   const [todoData, setTodoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,12 +41,31 @@ const HomePage = (props) => {
     }
 
     if(!filterAll){
-      products = products.filter((p) => {
-        if(!p.delivered){
-          return p
+      if(!filterDelivered){
+        products = products.filter((p) => {
+          if(!p.delivered){
+            return p
+          }
+        })
+      }
+
+      if(filterNoBuyer){
+        products = products.filter((p) => {
+          if(p.nameBuyer == null){
+            return p
+          }
+        })
+
+        if(filterDelivered){
+          products = products.filter((p) => {
+            if(p.delivered){
+              return p
+            }
+          })
         }
-      })
+      }
     }
+
 
 
     let codRastreio = []; // array de códigos de rastreios
@@ -70,6 +91,9 @@ const HomePage = (props) => {
                               ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
         }else{
           product['status'] = rastreios[i].eventos[0].descricao
+          if(product['status'] == "Objeto entregue ao destinatário"){
+            delivered(product)
+          }
         }
         i++
       } else {
@@ -85,21 +109,22 @@ const HomePage = (props) => {
 
   useEffect(async () => {
     await fetchData();
-  }, [filterAll])
+  }, [filterAll, filterDelivered, filterNoBuyer])
 
-  async function toggleTodo(data) {
-    await todoRequests.toggleTodo(data.id);
+  async function delivered(data) {
+    await productRequests.delivered(data.id);
   }
 
-  async function deleteTodo(data) {
-    await todoRequests.deleteTodo(data.id);
-    await fetchData();
+  function getLabel(){
+    if(filterAll){
+      return "Todos os produtos"
+    }else if(!filterDelivered && !filterNoBuyer){
+      return "Somente produtos que ainda não chegaram"
+    }else{
+      return "Somente produtos que chegaram e nao têm comprador"
+    }
   }
 
-  async function editTodo(id, data) {
-    await todoRequests.editTodo(id, data);
-    await fetchData();
-  }
 
   if (isLoading) return <LoadingIndicatorPage />;
 
@@ -111,19 +136,31 @@ const HomePage = (props) => {
           <BaseHeaderLayout title={props.categoryName} subtitle={`${todoData.length} produtos`} as="h2" />
           <ContentLayout>
 
-            <SimpleMenu id="label" label={filterAll? "Todos os produtos" : "Somente produtos que ainda não chegaram"}>
-              <MenuItem id="menuItem-All" onClick={() => setFilterAll(true)}>
+            <SimpleMenu id="label" label={getLabel()}>
+              <MenuItem id="menuItem-All" onClick={function filter(){
+                setFilterAll(true)
+                setFilterDelivered(true)
+                setFilterNoBuyer(false)
+              }}>
                 Todos os produtos
               </MenuItem>
-              <MenuItem id="menuItem-NotAll" onClick={() => setFilterAll(false)}>
+              <MenuItem id="menuItem-NotAll" onClick={function filter(){
+                setFilterAll(false)
+                setFilterDelivered(false)
+                setFilterNoBuyer(false)
+              }}>
                 Somente produtos que ainda não chegaram
+              </MenuItem>
+              <MenuItem id="menuItem-NotAll" onClick={function filter(){
+                setFilterAll(false)
+                setFilterDelivered(true)
+                setFilterNoBuyer(true)
+              }}>
+                Somente produtos que chegaram e nao têm comprador
               </MenuItem>
             </SimpleMenu>
             <PluginTable
               todoData={todoData}
-              toggleTodo={toggleTodo}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
             />
             {/* <Pagination>
               <PreviousLink as={NavLink} to="/1">

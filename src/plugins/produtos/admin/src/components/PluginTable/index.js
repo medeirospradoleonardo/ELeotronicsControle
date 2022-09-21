@@ -54,9 +54,6 @@ function TodoInput({ value, onChange }) {
 
 export default function TodoTable({
   todoData,
-  toggleTodo,
-  deleteTodo,
-  editTodo,
   setShowModal,
 }) {
   return (
