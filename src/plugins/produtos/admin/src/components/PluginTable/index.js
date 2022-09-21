@@ -19,6 +19,7 @@ import { TextInput } from "@strapi/design-system/TextInput";
 import Pencil from "@strapi/icons/Pencil";
 import Trash from "@strapi/icons/Trash";
 import Plus from "@strapi/icons/Plus";
+import { useHistory, useLocation } from 'react-router-dom';
 
 function TodoCheckbox({ value, checkboxID, callback, disabled }) {
   const [isChecked, setIsChecked] = useState(value);
@@ -53,25 +54,31 @@ function TodoInput({ value, onChange }) {
 }
 
 export default function TodoTable({
-  todoData,
+  productsData,
   setShowModal,
 }) {
+  const { push } = useHistory();
+
+  const handleGoTo = to => {
+    push(`/content-manager/collectionType/plugin::produtos.product/${to}`);
+  };
+
   return (
     <Box
-      // background="neutral0"
-      // hasRadius={true}
-      // shadow="filterShadow"
-      // padding={8}
-      // style={{ marginTop: "10px" }}
+    // background="neutral0"
+    // hasRadius={true}
+    // shadow="filterShadow"
+    // padding={8}
+    // style={{ marginTop: "10px" }}
     >
       <Table
         colCount={4}
         rowCount={10}
-        // footer={
-        //   <TFooter onClick={() => setShowModal(true)} icon={<Plus />}>
-        //     Add a todo
-        //   </TFooter>
-        // }
+      // footer={
+      //   <TFooter onClick={() => setShowModal(true)} icon={<Plus />}>
+      //     Add a todo
+      //   </TFooter>
+      // }
       >
         <Thead>
           <Tr>
@@ -97,70 +104,63 @@ export default function TodoTable({
               <Typography variant="sigma">Código de Rastreio</Typography>
             </Th>
             <Th>
-              <VisuallyHidden>Actions</VisuallyHidden>
+              <Typography variant="sigma">Ações</Typography>
             </Th>
           </Tr>
         </Thead>
 
         <Tbody>
-          {todoData.map((todo) => {
+          {productsData.map((product) => {
 
-            const [inputValue, setInputValue] = useState(todo.name);
+            const [inputValue, setInputValue] = useState(product.name);
 
             const [isEdit, setIsEdit] = useState(false);
-            
+
             return (
-              <Tr key={todo.id}>
+              <Tr key={product.id}>
                 <Td>
-                  <Typography textColor="neutral800">{todo.name}</Typography>
+                  <Typography textColor="neutral800">{product.name}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.category.name}</Typography>
+                  <Typography textColor="neutral800">{product.category.name}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.status}</Typography>
+                  <Typography textColor="neutral800">{product.status}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.nameReceiver}</Typography>
+                  <Typography textColor="neutral800">{product.nameReceiver}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.local}</Typography>
+                  <Typography textColor="neutral800">{product.local}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.nameBuyer}</Typography>
+                  <Typography textColor="neutral800">{product.nameBuyer}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{todo.code}</Typography>
+                  <Typography textColor="neutral800">{product.code}</Typography>
                 </Td>
 
                 <Td>
-                  {isEdit ? (
-                    <Flex style={{ justifyContent: "end" }}>
-                      <Button
-                        onClick={() => editTodo(todo.id, { name: inputValue })}
-                      >
-                        Save
-                      </Button>
-                    </Flex>
-                  ) : (
-                    <Flex style={{ justifyContent: "end" }}>
+                    <Flex>
                       <IconButton
-                        onClick={() => setIsEdit(true)}
+                        onClick={() => {
+                          handleGoTo(product.id);
+                        }}
                         label="Edit"
                         noBorder
                         icon={<Pencil />}
                       />
 
-                      <Box paddingLeft={1}>
+                      {/* <Box paddingLeft={1}>
                         <IconButton
-                          onClick={() => deleteTodo(todo)}
+                          onClick={() => deleteTodo(product)}
                           label="Delete"
                           noBorder
                           icon={<Trash />}
                         />
-                      </Box>
+                      </Box> */}
                     </Flex>
-                  )}
+                  
                 </Td>
               </Tr>
             );

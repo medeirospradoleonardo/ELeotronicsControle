@@ -15,12 +15,14 @@ import { Box } from '@strapi/design-system/Box';
 import PluginTable from "../../components/PluginTable";
 
 import { SimpleMenu, MenuItem } from '@strapi/design-system/SimpleMenu';
+import { EmptyStateLayout } from '@strapi/design-system/EmptyStateLayout';
+import { Illo } from '../../components/Illo';
 
 const HomePage = (props) => {
   const [filterAll, setFilterAll] = useState(false);
   const [filterDelivered, setFilterDelivered] = useState(false);
   const [filterNoBuyer, setFilterNoBuyer] = useState(false);
-  const [todoData, setTodoData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
@@ -40,25 +42,25 @@ const HomePage = (props) => {
       })
     }
 
-    if(!filterAll){
-      if(!filterDelivered){
+    if (!filterAll) {
+      if (!filterDelivered) {
         products = products.filter((p) => {
-          if(!p.delivered){
+          if (!p.delivered) {
             return p
           }
         })
       }
 
-      if(filterNoBuyer){
+      if (filterNoBuyer) {
         products = products.filter((p) => {
-          if(p.nameBuyer == null){
+          if (p.nameBuyer == null) {
             return p
           }
         })
 
-        if(filterDelivered){
+        if (filterDelivered) {
           products = products.filter((p) => {
-            if(p.delivered){
+            if (p.delivered) {
               return p
             }
           })
@@ -86,12 +88,12 @@ const HomePage = (props) => {
     let i = 0
     products.map((product) => {
       if (!product.delivered) {
-        if(rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde"){
+        if (rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde") {
           product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
                               ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
-        }else{
+        } else {
           product['status'] = rastreios[i].eventos[0].descricao
-          if(product['status'] == "Objeto entregue ao destinatário"){
+          if (product['status'] == "Objeto entregue ao destinatário") {
             delivered(product)
           }
         }
@@ -103,7 +105,7 @@ const HomePage = (props) => {
 
 
 
-    setTodoData(products);
+    setProductsData(products);
     setIsLoading(false);
   }
 
@@ -115,12 +117,12 @@ const HomePage = (props) => {
     await productRequests.delivered(data.id);
   }
 
-  function getLabel(){
-    if(filterAll){
+  function getLabel() {
+    if (filterAll) {
       return "Todos os produtos"
-    }else if(!filterDelivered && !filterNoBuyer){
+    } else if (!filterDelivered && !filterNoBuyer) {
       return "Somente produtos que ainda não chegaram"
-    }else{
+    } else {
       return "Somente produtos que chegaram e nao têm comprador"
     }
   }
@@ -129,29 +131,28 @@ const HomePage = (props) => {
   if (isLoading) return <LoadingIndicatorPage />;
 
   return (
-  
+
 
     <Box>
-        <>
-          <BaseHeaderLayout title={props.categoryName} subtitle={`${todoData.length} produtos`} as="h2" />
-          <ContentLayout>
-
+      <>
+        <BaseHeaderLayout title={props.categoryName} subtitle={`${productsData.length} produtos`} as="h2" />
+        <ContentLayout>
             <SimpleMenu id="label" label={getLabel()}>
-              <MenuItem id="menuItem-All" onClick={function filter(){
+              <MenuItem id="menuItem-All" onClick={function filter() {
                 setFilterAll(true)
                 setFilterDelivered(true)
                 setFilterNoBuyer(false)
               }}>
                 Todos os produtos
               </MenuItem>
-              <MenuItem id="menuItem-NotAll" onClick={function filter(){
+              <MenuItem id="menuItem-NotAll" onClick={function filter() {
                 setFilterAll(false)
                 setFilterDelivered(false)
                 setFilterNoBuyer(false)
               }}>
                 Somente produtos que ainda não chegaram
               </MenuItem>
-              <MenuItem id="menuItem-NotAll" onClick={function filter(){
+              <MenuItem id="menuItem-NotAll" onClick={function filter() {
                 setFilterAll(false)
                 setFilterDelivered(true)
                 setFilterNoBuyer(true)
@@ -160,26 +161,25 @@ const HomePage = (props) => {
               </MenuItem>
             </SimpleMenu>
             <PluginTable
-              todoData={todoData}
+              productsData={productsData}
             />
             {/* <Pagination>
-              <PreviousLink as={NavLink} to="/1">
-                Previous
-              </PreviousLink>
-              <PageLink as={NavLink} to="/1">
-                1
-              </PageLink>
-              <PageLink as={NavLink} to="/2">
-                2
-              </PageLink>
-              <NextLink as={NavLink} to="/2">
-                Next page
-              </NextLink>
-            </Pagination> */}
+            <PreviousLink as={NavLink} to="/1">
+              Previous
+            </PreviousLink>
+            <PageLink as={NavLink} to="/1">
+              1
+            </PageLink>
+            <PageLink as={NavLink} to="/2">
+              2
+            </PageLink>
+            <NextLink as={NavLink} to="/2">
+              Next page
+            </NextLink>
+          </Pagination> */}
 
           </ContentLayout>
-
-        </>
+      </>
 
 
     </Box>
