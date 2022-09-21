@@ -17,8 +17,8 @@ import PluginTable from "../../components/PluginTable";
 import { SimpleMenu, MenuItem } from '@strapi/design-system/SimpleMenu';
 
 const HomePage = (props) => {
-  const [filterAll, setFilterAll] = useState(true);
-  const [filterDelivered, setFilterDelivered] = useState(true);
+  const [filterAll, setFilterAll] = useState(false);
+  const [filterDelivered, setFilterDelivered] = useState(false);
   const [filterNoBuyer, setFilterNoBuyer] = useState(false);
   const [todoData, setTodoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
