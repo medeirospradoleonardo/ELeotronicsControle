@@ -11,6 +11,16 @@ module.exports = [
 
   {
     method: "GET",
+    path: "/product/findOne/:id",
+    handler: "product.findOne",
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
+
+  {
+    method: "GET",
     path: "/product/find",
     handler: "product.find",
     config: {

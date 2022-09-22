@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Table,
   Thead,
-  TFooter,
   Tbody,
   Tr,
   Td,
@@ -13,13 +12,15 @@ import { Flex } from "@strapi/design-system/Flex";
 import { Button } from "@strapi/design-system/Button";
 import { Typography } from "@strapi/design-system/Typography";
 import { IconButton } from "@strapi/design-system/IconButton";
-import { VisuallyHidden } from "@strapi/design-system/VisuallyHidden";
 import { BaseCheckbox } from "@strapi/design-system/BaseCheckbox";
 import { TextInput } from "@strapi/design-system/TextInput";
 import Pencil from "@strapi/icons/Pencil";
-import Trash from "@strapi/icons/Trash";
-import Plus from "@strapi/icons/Plus";
+import PicturePlus from '@strapi/icons/PicturePlus';
+
 import { useHistory, useLocation } from 'react-router-dom';
+import { ModalLayout, ModalBody, ModalHeader, ModalFooter } from '@strapi/design-system/ModalLayout';
+import productRequests from "../../api/product";
+import ReactPanZoom from 'react-image-pan-zoom-rotate';
 
 function TodoCheckbox({ value, checkboxID, callback, disabled }) {
   const [isChecked, setIsChecked] = useState(value);
@@ -54,31 +55,28 @@ function TodoInput({ value, onChange }) {
 }
 
 export default function TodoTable({
-  productsData,
-  setShowModal,
+  productsData
 }) {
   const { push } = useHistory();
+  const [isVisible, setIsVisible] = useState(false);
+  const [productModal, setProductModal] = useState(null);
+
+  async function setProduct(productIdModal) {
+    let p = await productRequests.getProduct(productIdModal)
+
+    setProductModal(p)
+    setIsVisible(prev => !prev)
+  }
 
   const handleGoTo = to => {
     push(`/content-manager/collectionType/plugin::produtos.product/${to}`);
   };
 
   return (
-    <Box
-    // background="neutral0"
-    // hasRadius={true}
-    // shadow="filterShadow"
-    // padding={8}
-    // style={{ marginTop: "10px" }}
-    >
+    <Box>
       <Table
         colCount={4}
         rowCount={10}
-      // footer={
-      //   <TFooter onClick={() => setShowModal(true)} icon={<Plus />}>
-      //     Add a todo
-      //   </TFooter>
-      // }
       >
         <Thead>
           <Tr>
@@ -141,7 +139,8 @@ export default function TodoTable({
                 </Td>
 
                 <Td>
-                    <Flex>
+                  <Flex justifyContent="start">
+                    <Box>
                       <IconButton
                         onClick={() => {
                           handleGoTo(product.id);
@@ -150,23 +149,43 @@ export default function TodoTable({
                         noBorder
                         icon={<Pencil />}
                       />
+                    </Box>
+                    <Box>
+                      <IconButton
+                        onClick={function func() {
+                          setProduct(product.id)
+                        }}
+                        label="Imagem"
+                        noBorder
+                        icon={<PicturePlus />}
+                      />
 
-                      {/* <Box paddingLeft={1}>
-                        <IconButton
-                          onClick={() => deleteTodo(product)}
-                          label="Delete"
-                          noBorder
-                          icon={<Trash />}
-                        />
-                      </Box> */}
-                    </Flex>
-                  
+                    </Box>
+                  </Flex>
+
                 </Td>
               </Tr>
             );
           })}
         </Tbody>
       </Table>
+      {isVisible && <ModalLayout onClose={() => setIsVisible(prev => !prev)} labelledBy="title">
+        <ModalHeader>
+          <Typography fontWeight="bold" textColor="neutral800" as="h2" id="title">
+            {`Imagem do ${productModal.category.name} ${productModal.name}`}
+          </Typography>
+        </ModalHeader>
+        <ModalBody>
+            {productModal.image != null ?
+            <ReactPanZoom
+            image={productModal.image[0].url} 
+            alt={`Imagem do ${productModal.category.name} ${productModal.name}`}
+          /> : <></>}
+        </ModalBody>
+        <ModalFooter endActions={<>
+          <Button onClick={() => setIsVisible(prev => !prev)}>Fechar</Button>
+        </>} />
+      </ModalLayout>}
     </Box>
   );
 }

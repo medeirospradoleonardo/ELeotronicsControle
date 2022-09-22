@@ -137,6 +137,13 @@ const HomePage = (props) => {
       <>
         <BaseHeaderLayout title={props.categoryName} subtitle={`${productsData.length} produtos`} as="h2" />
         <ContentLayout>
+            {/* {productsData[0].image != null? <img style={{
+            height: "700px",
+            width: "500px"
+          }} src={productsData[0].image[0].url}/> : <></>}
+            Como mostrar imagem
+          */}
+            
             <SimpleMenu id="label" label={getLabel()}>
               <MenuItem id="menuItem-All" onClick={function filter() {
                 setFilterAll(true)
