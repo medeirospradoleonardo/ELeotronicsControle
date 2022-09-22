@@ -20,7 +20,7 @@ import PicturePlus from '@strapi/icons/PicturePlus';
 import { useHistory, useLocation } from 'react-router-dom';
 import { ModalLayout, ModalBody, ModalHeader, ModalFooter } from '@strapi/design-system/ModalLayout';
 import productRequests from "../../api/product";
-import ReactPanZoom from 'react-image-pan-zoom-rotate';
+import ReactPanZoom from '../../../../react-image-pan-zoom-rotate';
 
 function TodoCheckbox({ value, checkboxID, callback, disabled }) {
   const [isChecked, setIsChecked] = useState(value);
