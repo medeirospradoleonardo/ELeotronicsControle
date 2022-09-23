@@ -88,9 +88,15 @@ const HomePage = (props) => {
     products.map((product) => {
       if (!product.delivered) {
         if(rastreios[i].eventos != null){
+          console.log(rastreios[i].eventos[0])
           if (rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde") {
-            product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
-                                ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            if(rastreios[i].eventos[0].unidade.endereco.cidade != null){
+              product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
+                                  ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            }else{
+              product['status'] = `De ${rastreios[i].eventos[0].unidade.nome} para 
+                                  ${rastreios[i].eventos[0].unidadeDestino.nome}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            }
           } else {
             product['status'] = rastreios[i].eventos[0].descricao
             if (product['status'] == "Objeto entregue ao destinatário") {
