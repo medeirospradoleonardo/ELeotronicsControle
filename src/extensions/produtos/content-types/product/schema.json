@@ -51,7 +51,8 @@
     },
     "code": {
       "type": "string",
-      "required": true
+      "required": true,
+      "regex": "^[a-zA-Z0-9]*$"
     },
     "category": {
       "type": "relation",
