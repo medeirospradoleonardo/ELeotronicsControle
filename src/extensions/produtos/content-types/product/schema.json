@@ -34,6 +34,7 @@
     "local": {
       "type": "enumeration",
       "enum": [
+        "Correios",
         "Minha Casa",
         "Estacionamento",
         "Fabrício",
@@ -77,6 +78,7 @@
         "Léo",
         "Vilma",
         "Carlos",
+        "Carol",
         "Fabrício",
         "Vinícius"
       ],
