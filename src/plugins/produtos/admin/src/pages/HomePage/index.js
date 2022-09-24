@@ -73,6 +73,12 @@ const HomePage = (props) => {
     let codRastreio = []; // array de códigos de rastreios
     let rastreios = []; // array de códigos de rastreios
 
+    products = products.filter((p) => {
+      if (p.code != null) {
+        return p
+      }
+    })
+
     products.map((product) => {
       if (!product.delivered) {
         codRastreio.push(product.code)
