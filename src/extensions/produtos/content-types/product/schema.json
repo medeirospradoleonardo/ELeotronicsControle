@@ -52,7 +52,7 @@
     },
     "code": {
       "type": "string",
-      "required": false,
+      "required": true,
       "regex": "^[a-zA-Z0-9]*$"
     },
     "category": {

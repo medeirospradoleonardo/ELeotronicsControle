@@ -52,7 +52,7 @@
     },
     "code": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "category": {
       "type": "relation",
