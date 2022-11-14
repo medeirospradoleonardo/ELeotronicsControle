@@ -6,17 +6,10 @@ import {
   ContentLayout,
 } from "@strapi/design-system/Layout";
 
-import {
-  rastrearEncomendas,
-} from '../../../../correios/lib/index';
-
-
 import { Box } from '@strapi/design-system/Box';
 import PluginTable from "../../components/PluginTable";
 
 import { SimpleMenu, MenuItem } from '@strapi/design-system/SimpleMenu';
-import { EmptyStateLayout } from '@strapi/design-system/EmptyStateLayout';
-import { Illo } from '../../components/Illo';
 
 const HomePage = (props) => {
   const [filterAll, setFilterAll] = useState(false);
@@ -28,6 +21,7 @@ const HomePage = (props) => {
   const fetchData = async () => {
     if (isLoading === false) setIsLoading(true);
     let products = await productRequests.getAllProducts();
+
 
     products.sort(function (a, b) {
       return a.name - b.name
@@ -75,20 +69,20 @@ const HomePage = (props) => {
 
     products.map((product) => {
       if (!product.delivered) {
-        codRastreio.push(product.code)
+        if(product.code){
+          codRastreio.push(product.code)
+        }
       }
     })
-
-
-    await rastrearEncomendas(codRastreio).then(response => {
-      rastreios = response
-    });
+    
+    if(codRastreio.length > 0){ 
+      rastreios = await productRequests.tracking(codRastreio)
+    }
 
     let i = 0
     products.map((product) => {
       if (!product.delivered) {
         if(rastreios[i].eventos != null){
-          console.log(rastreios[i].eventos[0])
           if (rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde") {
             if(rastreios[i].eventos[0].unidade.endereco.cidade != null){
               product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
@@ -203,4 +197,4 @@ const HomePage = (props) => {
   );
 };
 
-export default memo(HomePage);
+export default HomePage;

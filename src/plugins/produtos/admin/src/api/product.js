@@ -20,6 +20,16 @@ const productRequests = {
       method: "PUT",
     });
   },
+
+  tracking: async (codRastreio) => {
+
+    return await request(`/${pluginId}/product/tracking`, {
+      method: "POST",
+      body: {
+        codRastreio: codRastreio
+      }
+    });
+  },
 };
 
 export default productRequests;

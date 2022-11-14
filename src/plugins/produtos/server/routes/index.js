@@ -39,4 +39,14 @@ module.exports = [
     },
   },
 
+  {
+    method: "POST",
+    path: "/product/tracking",
+    handler: "product.tracking",
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
+
 ];
