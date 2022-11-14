@@ -14,6 +14,7 @@ module.exports = ({ env }) => ({
             apolloServer: {
                 tracing: false,
                 introspection: true,
+                cache: 'bounded',
             },
         }
     },
