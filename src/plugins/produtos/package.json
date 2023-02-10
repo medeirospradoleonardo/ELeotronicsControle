@@ -8,7 +8,7 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "correios-brasil": "^3.0.3",
+    "correios-brasil": "^3.0.4",
     "react-image-pan-zoom-rotate": "^1.6.0"
   },
   "author": {
