@@ -1,0 +1,5 @@
+- Clone o projeto para a pasta /home/Strapi
+- Rode o comando "docker compose up -d" dentro da pasta Docker
+- Entre no container e de um yarn na pasta do plugin
+- No container ainda, de um yarn build na pasta do projeto
+- Por fim, de um restart no container
