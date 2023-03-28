@@ -1,6 +1,8 @@
 module.exports = {
   myJob: {
     task: async ({ strapi }) => {
+      console.log('Rastreio Telegram...')
+
       const products = await strapi.service('plugin::produtos.product').find({
         filters: { delivered: false },
       });
