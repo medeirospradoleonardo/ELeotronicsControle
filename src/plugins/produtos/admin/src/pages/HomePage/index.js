@@ -1,3 +1,4 @@
+"use strict";
 import React, { memo, useState, useEffect } from "react";
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 import productRequests from "../../api/product";
@@ -76,7 +77,7 @@ const HomePage = (props) => {
     })
     
     if(codRastreio.length > 0){ 
-      rastreios = await productRequests.tracking(codRastreio)
+      rastreios = await productRequests.tracking(codRastreio);
     }
 
     let i = 0

@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  Layout,
-  BaseHeaderLayout,
-  ContentLayout,
+  Layout
 } from "@strapi/design-system/Layout";
 import { Switch, Route } from 'react-router-dom';
 import { NotFound } from '@strapi/helper-plugin';

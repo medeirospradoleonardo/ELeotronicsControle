@@ -90,9 +90,13 @@
     },
     "delivered": {
       "type": "boolean",
-      "required": false
+      "required": false,
+      "default": false
     },
     "nameBuyer": {
+      "type": "string"
+    },
+    "lastUpdate": {
       "type": "string"
     }
   }

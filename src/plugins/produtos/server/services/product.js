@@ -10,6 +10,7 @@ module.exports = ({ strapi }) => ({
   async find(query) {
     return await strapi.entityService.findMany("plugin::produtos.product", {
       populate: '*',
+      ...query
     });
   },
 
@@ -142,14 +143,33 @@ module.exports = ({ strapi }) => ({
     //   })
     // }
 
-
-
     let codRastreio = Object.values(query);
     let rastreios = []
 
-    await rastrearEncomendas(codRastreio[0]).then(response => {
-      rastreios = response
-    });
+    if(typeof(codRastreio[0]) === 'string'){
+      await rastrearEncomendas(codRastreio).then(response => {
+        rastreios = response
+      });
+    }else {
+      await rastrearEncomendas(codRastreio[0]).then(response => {
+        rastreios = response
+      });
+    }
+
     return rastreios
+  },
+
+  async telegram(product) {
+    const TelegramBot = require('node-telegram-bot-api')
+
+    const telegramChatIds = process.env.TELEGRAM_CHAT_IDS.split(", ");
+
+    const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {polling: false})
+
+    telegramChatIds.map((telegramChatId) => {
+      bot.sendMessage(telegramChatId.replace("'", ""), `*${product.category.name} - ${product.name}* \n✈️ ${product.status} \n📍 ${product.local}`, { parse_mode: 'Markdown' });
+    })
+
+    return
   },
 });
