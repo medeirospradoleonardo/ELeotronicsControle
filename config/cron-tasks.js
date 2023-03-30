@@ -31,9 +31,6 @@ module.exports = {
               }
             } else {
               product['status'] = rastreios[i].eventos[0].descricao
-              if (product['status'] == "Objeto entregue ao destinatário") {
-                delivered(product)
-              }
             }
           }else{
             product['status'] = "Objeto não encontrado"
