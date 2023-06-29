@@ -121,10 +121,10 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
 
-correios-brasil@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/correios-brasil/-/correios-brasil-3.0.4.tgz#9386d85ce60b295184afe3795eea816f37b7dd65"
-  integrity sha512-HNxjDTnpkvPAQpXIHQLEo155QIbAwPPMNr3/+VbeUBqSLINP1fl4mrRK14F5NsriitUvbm9iA7ddo3avR/vBxg==
+correios-brasil@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/correios-brasil/-/correios-brasil-3.0.5.tgz#440722b2c9b5a17be8c1193210f10e0aafc8adb0"
+  integrity sha512-ffpm7VsoHrOpGZ1hKH27jhe7D9hyVwmP5RIUCNaboyOMjg+qSsr/w514Zo4etdhckrmBlfpJQqxtL6h/EqMREw==
   dependencies:
     axios "^1.2.2"
     iconv-lite "^0.6.3"
