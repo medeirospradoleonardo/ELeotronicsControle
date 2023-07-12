@@ -8,7 +8,7 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "correios-brasil": "^3.0.5",
+    "correios-brasil": "^3.0.6",
     "node-telegram-bot-api": "^0.61.0",
     "react-image-pan-zoom-rotate": "^1.6.0"
   },
