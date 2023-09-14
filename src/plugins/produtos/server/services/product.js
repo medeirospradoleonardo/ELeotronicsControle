@@ -52,7 +52,7 @@ module.exports = ({ strapi }) => ({
 
     // Token Constante da requisição de PROXYAPP_RASTREAR
     const REQUEST_TOKEN =
-      'rPgi596V7vNHkEJwJA0eW30hUeJNqvKcHVdhfcX3CDuNCFu3KT5XgkbDf2iFc/g7nuGbFx4bNOBUEieF0k+jICMcWRN+ug0asYGwMM511vBzfbLotGy6IR5Ya0jUjx+N/EAhJM3jjxYUudPZLWIdwoL/B23mPvbQEXAyWcEAxHS7JUOgC9p/Zj/RHXtF9W3iK1TfRdk1CjNP5UmwUdGWwawgvfPY7Fof9nPrHMz/MkeYn0/PSemHHhJ3TdHCFc0h/MrWDSjsTtznZbpQcZZL4rAes9vOoN8SWJgyLmK21qXeErdB1OljK/VYbBvTfTzEcoOWM3/4Z3jGPyxM+a77Mg==';
+      'WoAH5n3OQui/naI7zBWVOEOLbYx7xlm/yvA9QPGEBW4g2Z9IcshdF7dD7NlPRTrpi6tgZZ88kOQTm6ZE6Q0Wk5LTprrXP2jatpIAr8/1nKWRbwvv9+iSbpTFo18pqLow89197siHy39XrYJDPZj34t0pUx7rFiTEUxAvkbA8GhPDkcB42oaJE9YL8kNezlgzW1Zn7LGEnYQ95uDpm6V69At7Vh/tqrIaLlCPwlMFFoIfvhSF2Etxo4+6EOSjMSubEN7FW378d29UCE6BpRdUnz1viQCyZ4LbIHijtAtczNl+SF0GGpivEi0x6aeFQbq9GGJXdEMiLW/68dT+M3Rx0A==';
     const REQUEST_DATA = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
     const REQUEST_SIGN = crypto
       .createHash('md5')
