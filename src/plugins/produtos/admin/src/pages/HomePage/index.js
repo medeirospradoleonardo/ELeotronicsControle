@@ -20,6 +20,7 @@ const HomePage = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
+
     if (isLoading === false) setIsLoading(true);
     let products = await productRequests.getAllProducts();
 
@@ -70,27 +71,33 @@ const HomePage = (props) => {
 
     products.map((product) => {
       if (!product.delivered) {
-        if(product.code){
+        if (product.code) {
           codRastreio.push(product.code)
         }
       }
     })
-    
-    if(codRastreio.length > 0){ 
+
+    if (codRastreio.length > 0) {
       rastreios = await productRequests.tracking(codRastreio);
     }
 
     let i = 0
     products.map((product) => {
       if (!product.delivered) {
-        if(rastreios[i].eventos != null){
+        if (rastreios[i].eventos != null) {
           if (rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde") {
-            if(rastreios[i].eventos[0].unidade.endereco.cidade != null){
-              product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
-                                  ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
-            }else{
-              product['status'] = `De ${rastreios[i].eventos[0].unidade.nome} para 
-                                  ${rastreios[i].eventos[0].unidadeDestino.nome}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            // if(rastreios[i].eventos[0].unidade.endereco.cidade != null){
+            //   product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
+            //                       ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            // }else{
+            //   product['status'] = `De ${rastreios[i].eventos[0].unidade.nome} para 
+            //                       ${rastreios[i].eventos[0].unidadeDestino.nome}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
+            // }
+
+            if (rastreios[i].eventos[0].unidade != null) {
+              product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf}`
+            } else {
+              product['status'] = 'De HONG KONG para Unidade de Tratamento Internacional-BR'
             }
           } else {
             product['status'] = rastreios[i].eventos[0].descricao
@@ -98,7 +105,7 @@ const HomePage = (props) => {
               delivered(product)
             }
           }
-        }else{
+        } else {
           product['status'] = "Objeto não encontrado"
         }
         i++
@@ -109,13 +116,11 @@ const HomePage = (props) => {
 
 
 
+
     setProductsData(products);
     setIsLoading(false);
   }
 
-  useEffect(async () => {
-    await fetchData();
-  }, [filterAll, filterDelivered, filterNoBuyer])
 
   async function delivered(data) {
     await productRequests.delivered(data.id);
@@ -131,6 +136,9 @@ const HomePage = (props) => {
     }
   }
 
+  useEffect(async () => {
+    await fetchData();
+  }, [filterAll, filterDelivered, filterNoBuyer])
 
   if (isLoading) return <LoadingIndicatorPage />;
 
@@ -141,55 +149,40 @@ const HomePage = (props) => {
       <>
         <BaseHeaderLayout title={props.categoryName} subtitle={`${productsData.length} produtos`} as="h2" />
         <ContentLayout>
-            {/* {productsData[0].image != null? <img style={{
+          {/* {productsData[0].image != null? <img style={{
             height: "700px",
             width: "500px"
           }} src={productsData[0].image[0].url}/> : <></>}
             Como mostrar imagem
           */}
-            
-            <SimpleMenu id="label" label={getLabel()}>
-              <MenuItem id="menuItem-All" onClick={function filter() {
-                setFilterAll(true)
-                setFilterDelivered(true)
-                setFilterNoBuyer(false)
-              }}>
-                Todos os produtos
-              </MenuItem>
-              <MenuItem id="menuItem-NotAll" onClick={function filter() {
-                setFilterAll(false)
-                setFilterDelivered(false)
-                setFilterNoBuyer(false)
-              }}>
-                Somente produtos que ainda não chegaram
-              </MenuItem>
-              <MenuItem id="menuItem-NotAll" onClick={function filter() {
-                setFilterAll(false)
-                setFilterDelivered(true)
-                setFilterNoBuyer(true)
-              }}>
-                Somente produtos que chegaram e nao têm comprador
-              </MenuItem>
-            </SimpleMenu>
-            <PluginTable
-              productsData={productsData}
-            />
-            {/* <Pagination>
-            <PreviousLink as={NavLink} to="/1">
-              Previous
-            </PreviousLink>
-            <PageLink as={NavLink} to="/1">
-              1
-            </PageLink>
-            <PageLink as={NavLink} to="/2">
-              2
-            </PageLink>
-            <NextLink as={NavLink} to="/2">
-              Next page
-            </NextLink>
-          </Pagination> */}
 
-          </ContentLayout>
+          <SimpleMenu id="label" label={getLabel()}>
+            <MenuItem id="menuItem-All" onClick={function filter() {
+              setFilterAll(true)
+              setFilterDelivered(true)
+              setFilterNoBuyer(false)
+            }}>
+              Todos os produtos
+            </MenuItem>
+            <MenuItem id="menuItem-NotAll" onClick={function filter() {
+              setFilterAll(false)
+              setFilterDelivered(false)
+              setFilterNoBuyer(false)
+            }}>
+              Somente produtos que ainda não chegaram
+            </MenuItem>
+            <MenuItem id="menuItem-NotAll" onClick={function filter() {
+              setFilterAll(false)
+              setFilterDelivered(true)
+              setFilterNoBuyer(true)
+            }}>
+              Somente produtos que chegaram e nao têm comprador
+            </MenuItem>
+          </SimpleMenu>
+          <PluginTable
+            productsData={productsData}
+          />
+        </ContentLayout>
       </>
 
 
