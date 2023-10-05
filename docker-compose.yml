@@ -1,18 +1,19 @@
-version: '4'
+version: "3"
 
 services:
-  strapi:
-    container_name: strapi
-    build: .
+  app:
+    build:
+      context: .
     env_file: .env
-    image: naskio/strapi
+    container_name: strapi_ELeotronics
+    restart: unless-stopped
     environment:
       NODE_ENV: ${NODE_ENV}
       NODE_VERSION: ${NODE_VERSION}
       YARN_VERSION: ${YARN_VERSION}
       DATABASE_URL: ${DATABASE_URL}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: strapiDB
+      DATABASE_HOST: db
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
@@ -21,25 +22,26 @@ services:
       AWS_ACCESS_SECRET: ${AWS_ACCESS_SECRET}
       AWS_BUCKET: ${AWS_BUCKET}
       AWS_REGION: ${AWS_REGION}
+    volumes:
+      - ./app:/srv/app
     ports:
       - 1337:1337
-    volumes:
-      - /home/ELeotronicsControle:/srv/app # Nesse caso, copie o projeto para /home/Strapi/
     depends_on:
       - db
     networks:
       - strapi
 
   db:
-    container_name: postgres
     image: postgres
+    container_name: postgres
     env_file: .env
-    volumes:
-      - ./criarDatabase.sql:/docker-entrypoint-initdb.d/criarDatabase.sql
-      # - ./db:/var/lib/postgresql/data
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    # volumes:
+    #   - ./Backup.sql:/docker-entrypoint-initdb.d/Backup.sql
     ports:
       - 5432:5432
     networks:

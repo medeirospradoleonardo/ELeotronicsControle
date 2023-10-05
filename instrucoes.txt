@@ -1,0 +1,5 @@
+- Clone o projeto para a pasta /home
+- Rode o comando "docker compose up --build" dentro da raiz
+
+COMANDOS DOCKER
+"docker compose down --volumes" para remover containers

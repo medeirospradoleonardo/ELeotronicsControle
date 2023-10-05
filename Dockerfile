@@ -3,7 +3,7 @@ FROM node:14
 
 # Set up working directory
 WORKDIR /app
-
+RUN ls
 # Copy package.json to root directory
 COPY package.json .
 
@@ -19,6 +19,7 @@ COPY src/ src/
 COPY public/ public/
 COPY database/ database/
 COPY config/ config/
+COPY .env ./.env
 # ...
 
 # Build admin panel
