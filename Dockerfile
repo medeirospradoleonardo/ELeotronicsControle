@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 # alternatively you can use FROM strapi/base:latest
 
 # Set up working directory
