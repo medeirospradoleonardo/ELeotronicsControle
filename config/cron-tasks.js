@@ -41,7 +41,9 @@ module.exports = {
           })
 
           // Manda pro telegram
-          await strapi.service('plugin::produtos.product').telegram(product);
+          if (product.status !== "Objeto não encontrado") {
+            await strapi.service('plugin::produtos.product').telegram(product);
+          }
         }
       })
     },
