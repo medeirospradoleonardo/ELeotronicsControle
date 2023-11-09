@@ -85,25 +85,9 @@ const HomePage = (props) => {
     products.map((product) => {
       if (!product.delivered) {
         if (rastreios[i].eventos != null) {
-          if (rastreios[i].eventos[0].descricao == "Objeto em trânsito - por favor aguarde") {
-            // if(rastreios[i].eventos[0].unidade.endereco.cidade != null){
-            //   product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf} para 
-            //                       ${rastreios[i].eventos[0].unidadeDestino.endereco.cidade}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
-            // }else{
-            //   product['status'] = `De ${rastreios[i].eventos[0].unidade.nome} para 
-            //                       ${rastreios[i].eventos[0].unidadeDestino.nome}-${rastreios[i].eventos[0].unidadeDestino.endereco.uf}`
-            // }
-
-            if (rastreios[i].eventos[0].unidade != null) {
-              product['status'] = `De ${rastreios[i].eventos[0].unidade.endereco.cidade}-${rastreios[i].eventos[0].unidade.endereco.uf}`
-            } else {
-              product['status'] = 'De HONG KONG para Unidade de Tratamento Internacional-BR'
-            }
-          } else {
-            product['status'] = rastreios[i].eventos[0].descricao
-            if (product['status'] == "Objeto entregue ao destinatário") {
-              delivered(product)
-            }
+          product['status'] = rastreios[i].eventos[0].descricao
+          if (product['status'] == "Objeto entregue ao destinatário") {
+            delivered(product)
           }
         } else {
           product['status'] = "Objeto não encontrado"

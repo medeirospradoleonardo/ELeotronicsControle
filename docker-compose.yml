@@ -41,7 +41,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - ./Backup.sql:/docker-entrypoint-initdb.d/Backup.sql
+      - ./BackupStrapiELeotronics.sql:/docker-entrypoint-initdb.d/BackupStrapiELeotronics.sql
     ports:
       - 5432:5432
     networks:

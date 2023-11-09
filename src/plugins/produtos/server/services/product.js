@@ -46,40 +46,39 @@ module.exports = ({ strapi }) => ({
     let codRastreio = Object.values(query);
 
     rastreios = await Promise.all(codRastreio[0].map(async (codigo) => (
-      await request(`https://www.cepcerto.com/ws/encomenda/${codigo}/`, {
+      await request(`https://www.websro.com.br/rastreamento-correios.php?P_COD_UNI=${codigo}`, {
         method: 'GET',
         headers: {
           'content-type': 'text/xml',
           'user-agent': 'Dart/2.18 (dart:io)',
         }
-      }).then((body) => {
-        const data = JSON.parse(
-          convert.xml2json(body.data, { compact: true, spaces: 2 })
-        );
+      }).then(async (body) => {
 
-        if (data.xml.row?.Erro?._text) {
+        if (body.data.split('<li>Status: <b>').length > 1) {
           return (
             {
-              "eventos": null
+              "eventos": [
+                {
+                  "descricao": body.data.split('<li>Status: <b>')[1].split('</b></li>')[0],
+                  "unidade": body.data.split('<li>Local:').length > 1 ? body.data.split('<li>Local:')[1].split('</li>')[0] : null
+                }
+              ]
+
             }
           )
         } else {
           return (
             {
-              "eventos": data.xml.row.map((evento) => {
-                return {
-                  "descricao": getStringFiltered(evento.descricao._text),
-                  "unidade": evento.cidade._text ? {
-                    "endereco": {
-                      "cidade": getStringFiltered(evento.cidade._text),
-                      "uf": getStringFiltered(evento.uf._text)
-                    }
-                  } : null
-                }
-              })
+              "eventos": null
             }
           )
         }
+      }).catch(() => {
+        return (
+          {
+            "eventos": null
+          }
+        )
       })
     )))
 
