@@ -32,7 +32,7 @@ module.exports = {
         }
 
         // Se o status mudar
-        if (product.status !== product.lastUpdate) {
+        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado") {
           // Atualiza
           await strapi.entityService.update('plugin::produtos.product', product.id, {
             data: {
@@ -41,9 +41,7 @@ module.exports = {
           })
 
           // Manda pro telegram
-          if (product.status !== "Objeto não encontrado") {
-            await strapi.service('plugin::produtos.product').telegram(product);
-          }
+          await strapi.service('plugin::produtos.product').telegram(product);
         }
       })
     },
