@@ -55,12 +55,17 @@ module.exports = ({ strapi }) => ({
       }).then(async (body) => {
 
         if (body.data.split('<li>Status: <b>').length > 1) {
+          let status = body.data.split('<li>Status: <b>')[1].split('</b></li>')[0]
+          if (status == 'Objeto em trânsito - por favor aguarde') {
+            const origem = body.data.split('<li>Origem: ')[1].split('</li>')[0].replace('Unidade de Tratamento - ', '').replace(/\s/g, '').replace('/', '-').toUpperCase()
+            const destino = body.data.split('<li>Destino: ')[1].split('</li>')[0].replace('Unidade de Tratamento - ', '').replace(/\s/g, '').replace('/', '-').toUpperCase()
+            status = `De ${origem} para ${destino}`
+          }
           return (
             {
               "eventos": [
                 {
-                  "descricao": body.data.split('<li>Status: <b>')[1].split('</b></li>')[0],
-                  "unidade": body.data.split('<li>Local:').length > 1 ? body.data.split('<li>Local:')[1].split('</li>')[0] : null
+                  "descricao": status
                 }
               ]
 
