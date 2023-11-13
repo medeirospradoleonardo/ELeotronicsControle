@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.3
--- Dumped by pg_dump version 15.3
+-- Dumped from database version 16.0 (Debian 16.0-1.pgdg120+1)
+-- Dumped by pg_dump version 16.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -52,7 +52,7 @@ CREATE SEQUENCE public.admin_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.admin_permissions_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.admin_permissions_id_seq OWNER TO postgres;
 
 --
 -- Name: admin_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -88,7 +88,7 @@ CREATE SEQUENCE public.admin_permissions_role_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.admin_permissions_role_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.admin_permissions_role_links_id_seq OWNER TO postgres;
 
 --
 -- Name: admin_permissions_role_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -128,7 +128,7 @@ CREATE SEQUENCE public.admin_roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.admin_roles_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.admin_roles_id_seq OWNER TO postgres;
 
 --
 -- Name: admin_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -175,7 +175,7 @@ CREATE SEQUENCE public.admin_users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.admin_users_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.admin_users_id_seq OWNER TO postgres;
 
 --
 -- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -212,7 +212,7 @@ CREATE SEQUENCE public.admin_users_roles_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.admin_users_roles_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.admin_users_roles_links_id_seq OWNER TO postgres;
 
 --
 -- Name: admin_users_roles_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -251,7 +251,7 @@ CREATE SEQUENCE public.categories_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.categories_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.categories_id_seq OWNER TO postgres;
 
 --
 -- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -317,7 +317,7 @@ CREATE SEQUENCE public.files_folder_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.files_folder_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.files_folder_links_id_seq OWNER TO postgres;
 
 --
 -- Name: files_folder_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -339,7 +339,7 @@ CREATE SEQUENCE public.files_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.files_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.files_id_seq OWNER TO postgres;
 
 --
 -- Name: files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -377,7 +377,7 @@ CREATE SEQUENCE public.files_related_morphs_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.files_related_morphs_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.files_related_morphs_id_seq OWNER TO postgres;
 
 --
 -- Name: files_related_morphs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -416,7 +416,7 @@ CREATE SEQUENCE public.i18n_locale_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.i18n_locale_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.i18n_locale_id_seq OWNER TO postgres;
 
 --
 -- Name: i18n_locale_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -479,7 +479,7 @@ CREATE SEQUENCE public.products_category_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.products_category_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.products_category_links_id_seq OWNER TO postgres;
 
 --
 -- Name: products_category_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -501,7 +501,7 @@ CREATE SEQUENCE public.products_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.products_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.products_id_seq OWNER TO postgres;
 
 --
 -- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -539,7 +539,7 @@ CREATE SEQUENCE public.strapi_api_token_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_api_token_permissions_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_api_token_permissions_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_api_token_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -575,7 +575,7 @@ CREATE SEQUENCE public.strapi_api_token_permissions_token_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_api_token_permissions_token_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_api_token_permissions_token_links_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_api_token_permissions_token_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -619,7 +619,7 @@ CREATE SEQUENCE public.strapi_api_tokens_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_api_tokens_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_api_tokens_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_api_tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -657,7 +657,7 @@ CREATE SEQUENCE public.strapi_core_store_settings_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_core_store_settings_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_core_store_settings_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_core_store_settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -693,7 +693,7 @@ CREATE SEQUENCE public.strapi_database_schema_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_database_schema_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_database_schema_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_database_schema_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -728,7 +728,7 @@ CREATE SEQUENCE public.strapi_migrations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_migrations_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_migrations_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -766,7 +766,7 @@ CREATE SEQUENCE public.strapi_webhooks_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.strapi_webhooks_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.strapi_webhooks_id_seq OWNER TO postgres;
 
 --
 -- Name: strapi_webhooks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -805,7 +805,7 @@ CREATE SEQUENCE public.teste2s_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.teste2s_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.teste2s_id_seq OWNER TO postgres;
 
 --
 -- Name: teste2s_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -842,7 +842,7 @@ CREATE SEQUENCE public.teste_2_s_testes_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.teste_2_s_testes_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.teste_2_s_testes_links_id_seq OWNER TO postgres;
 
 --
 -- Name: teste_2_s_testes_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -881,7 +881,7 @@ CREATE SEQUENCE public.testes_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.testes_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.testes_id_seq OWNER TO postgres;
 
 --
 -- Name: testes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -918,7 +918,7 @@ CREATE SEQUENCE public.testes_teste_2_s_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.testes_teste_2_s_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.testes_teste_2_s_links_id_seq OWNER TO postgres;
 
 --
 -- Name: testes_teste_2_s_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -956,7 +956,7 @@ CREATE SEQUENCE public.up_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.up_permissions_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.up_permissions_id_seq OWNER TO postgres;
 
 --
 -- Name: up_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -992,7 +992,7 @@ CREATE SEQUENCE public.up_permissions_role_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.up_permissions_role_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.up_permissions_role_links_id_seq OWNER TO postgres;
 
 --
 -- Name: up_permissions_role_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1032,7 +1032,7 @@ CREATE SEQUENCE public.up_roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.up_roles_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.up_roles_id_seq OWNER TO postgres;
 
 --
 -- Name: up_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1077,7 +1077,7 @@ CREATE SEQUENCE public.up_users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.up_users_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.up_users_id_seq OWNER TO postgres;
 
 --
 -- Name: up_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1113,7 +1113,7 @@ CREATE SEQUENCE public.up_users_role_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.up_users_role_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.up_users_role_links_id_seq OWNER TO postgres;
 
 --
 -- Name: up_users_role_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1153,7 +1153,7 @@ CREATE SEQUENCE public.upload_folders_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.upload_folders_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.upload_folders_id_seq OWNER TO postgres;
 
 --
 -- Name: upload_folders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1189,7 +1189,7 @@ CREATE SEQUENCE public.upload_folders_parent_links_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.upload_folders_parent_links_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.upload_folders_parent_links_id_seq OWNER TO postgres;
 
 --
 -- Name: upload_folders_parent_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -1737,15 +1737,21 @@ COPY public.i18n_locale (id, name, code, created_at, updated_at, created_by_id, 
 --
 
 COPY public.products (id, name, slug, email, local, price, tax, code, price_tax, name_receiver, delivered, name_buyer, last_update, created_at, updated_at, created_by_id, updated_by_id) FROM stdin;
-6	2	2-2	eutojafui1@hotmail.com	Vo	1100	\N	LB581604590HK	\N	Vo	f	\N	Fiscalização aduaneira concluída - aguardando pagamento	2023-10-18 12:57:00.084	2023-11-08 20:30:01.875	1	1
-7	3	3	eutojafui1@hotmail.com	Vo	1100	\N	LB581600730HK	\N	Vo	f	\N	Fiscalização aduaneira concluída - aguardando pagamento	2023-10-18 12:57:23.295	2023-11-08 20:30:01.878	1	1
-8	4	4	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB581604229HK	\N	Camila	f	\N	Fiscalização aduaneira concluída - aguardando pagamento	2023-10-18 12:57:44.408	2023-11-08 20:30:01.88	1	1
-5	1	1-2	eutojafui1@hotmail.com	Fabrício	1100	\N	LB581600726HK	\N	Fabrício	f	\N	Fiscalização aduaneira concluída - aguardando pagamento	2023-10-10 12:27:13.43	2023-11-08 20:30:01.884	1	1
-9	1	1-3	eutojafui1@hotmail.com	Estacionamento	1400	\N	NL989345000BR	\N	Carlos	f	\N	Objeto não encontrado	2023-11-08 20:32:20.798	2023-11-08 21:00:04.663	1	1
-11	5	5-1	eutojafui1@hotmail.com	Minha Casa	921	\N	NB886412396BR	\N	Léo	f	\N	Encaminhado para fiscalização aduaneira	2023-11-08 20:33:13.435	2023-11-08 21:00:04.665	1	1
-10	2	2-3	eutojafui1@hotmail.com	Minha Casa	1300	\N	NL989412336BR	\N	Léo	f	\N	Objeto não encontrado	2023-11-08 20:32:44.941	2023-11-08 21:00:04.669	1	1
 3	1	1-1	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB579752952HK	\N	Vilma	t	\N	Objeto não encontrado	2023-10-05 15:42:32.728	2023-11-08 21:33:44.882	1	1
 4	2	2-1	eutojafui1@hotmail.com	Estacionamento	1100	\N	LB579944793HK	\N	Carol	t	\N	Objeto não encontrado	2023-10-05 15:42:57.498	2023-11-08 21:33:51.736	1	1
+8	4	4	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB581604229HK	\N	Camila	f	\N	De CURITIBA-PR para BAURU-SP	2023-10-18 12:57:44.408	2023-11-11 06:00:02.119	1	1
+9	1	1-3	eutojafui1@hotmail.com	Estacionamento	1400	\N	NL989345000BR	\N	Carlos	f	\N	Objeto postado	2023-11-08 20:32:20.798	2023-11-11 15:00:01.785	1	1
+10	2	2-3	eutojafui1@hotmail.com	Minha Casa	1300	\N	NL989412336BR	\N	Léo	f	\N	Objeto postado	2023-11-08 20:32:44.941	2023-11-11 15:30:01.795	1	1
+6	2	2-2	eutojafui1@hotmail.com	Vo	1100	\N	LB581604590HK	\N	Vo	f	\N	De CURITIBA-PR para BAURU-SP	2023-10-18 12:57:00.084	2023-11-12 02:30:02.434	1	1
+12	3	3-1	eutojafui1@hotmail.com	Minha Casa	1000	\N	NL998128391BR	\N	Vilma	f	\N	\N	2023-11-13 12:27:55.128	2023-11-13 12:27:55.128	1	1
+13	4	4-1	eutojafui1@hotmail.com	Estacionamento	1150	\N	NL953851463BR	\N	Carol	f	\N	\N	2023-11-13 12:28:24.404	2023-11-13 12:28:24.404	1	1
+14	5	5-2	eutojafui1@hotmail.com	Fabrício	1150	\N	NL953849867BR	\N	Fabrício	f	\N	\N	2023-11-13 12:28:46.126	2023-11-13 12:29:22.829	1	1
+15	6	6	eutojafui1@hotmail.com	Vo	1150	\N	NL953849544BR	\N	Vo	f	\N	\N	2023-11-13 12:29:55.164	2023-11-13 12:29:55.164	1	1
+16	7	7	eutojafui1@hotmail.com	Vo	1150	\N	NL953849385BR	\N	Vo	f	\N	\N	2023-11-13 12:30:31.3	2023-11-13 12:30:31.3	1	1
+17	8	8	eutojafui1@hotmail.com	Minha Casa	1150	\N	NL953849544BR	\N	Camila	f	\N	\N	2023-11-13 12:31:37.916	2023-11-13 12:31:37.916	1	1
+7	3	3	eutojafui1@hotmail.com	Vo	1100	\N	LB581600730HK	\N	Vo	f	\N	Objeto está em rota de entrega	2023-10-18 12:57:23.295	2023-11-13 14:00:02.119	1	1
+5	1	1-2	eutojafui1@hotmail.com	Fabrício	1100	\N	LB581600726HK	\N	Fabrício	f	\N	Objeto está em rota de entrega	2023-10-10 12:27:13.43	2023-11-13 14:00:02.143	1	1
+11	5	5-1	eutojafui1@hotmail.com	Minha Casa	921	\N	NB886412396BR	\N	Léo	f	\N	Pagamento confirmado	2023-11-08 20:33:13.435	2023-11-10 10:00:02.04	1	1
 \.
 
 
@@ -1763,6 +1769,12 @@ COPY public.products_category_links (id, product_id, category_id, product_order)
 9	9	4	1
 10	10	4	2
 11	11	3	5
+12	12	4	3
+13	13	4	4
+14	14	4	5
+15	15	4	6
+16	16	4	7
+17	17	4	8
 \.
 
 
@@ -2029,14 +2041,14 @@ SELECT pg_catalog.setval('public.i18n_locale_id_seq', 1, true);
 -- Name: products_category_links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_category_links_id_seq', 11, true);
+SELECT pg_catalog.setval('public.products_category_links_id_seq', 17, true);
 
 
 --
 -- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_id_seq', 11, true);
+SELECT pg_catalog.setval('public.products_id_seq', 17, true);
 
 
 --

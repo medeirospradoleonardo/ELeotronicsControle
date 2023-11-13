@@ -75,6 +75,9 @@ module.exports = ({ strapi }) => ({
             case 'Fiscalização aduaneira concluída - aguardando pagamento':
               status = 'Aguardando Pagamento'
               break
+            case 'Objeto está em rota de entrega':
+              status = 'Objeto saiu para entrega ao destinatário'
+              break
             default:
               break;
           }
