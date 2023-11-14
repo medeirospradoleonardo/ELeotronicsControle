@@ -15,25 +15,25 @@ export default function App() {
   const [num, setNum] = useState([]);
   const [linksData, setLinksData] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      const result = await categoryRequests.getAllCategorys();
-      let links = [];
+  // useEffect(() => {
+  //   async function getData() {
+  //     const result = await categoryRequests.getAllCategorys();
+  //     let links = [];
 
-      result.map((category, i) => {
-        links.push({
-          id: category.id,
-          label: category.name,
-          to: category.name,
-        })
-      })
+  //     result.map((category, i) => {
+  //       links.push({
+  //         id: category.id,
+  //         label: category.name,
+  //         to: category.name,
+  //       })
+  //     })
 
-      setLinksData(links);
-      setNum(result);
-    }
+  //     setLinksData(links);
+  //     setNum(result);
+  //   }
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
   return (
     // <div>
@@ -43,13 +43,7 @@ export default function App() {
     //     <Route component={NotFound} />
     //   </Switch>
     // </div>
-    <Layout sideNav={<PluginSubNav links={linksData} />}>
-      <Switch>
-        <Route path={`/plugins/${pluginId}`} component={() => (<HomePage categoryId={0} categoryName={'Todos os produtos'} />)} exact />
-        {num.map(c => <Route path={`/plugins/${pluginId}/${c.name.replace(" ", "")}`} component={() => (<HomePage categoryId={c.id} categoryName={c.name} />)} key={c.id} exact />)}
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+    <HomePage categoryId={0} categoryName={'Todos os produtos'} />
   );
 }
 
