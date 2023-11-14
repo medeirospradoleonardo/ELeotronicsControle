@@ -160,10 +160,10 @@ module.exports = ({ strapi }) => ({
 
                 switch (origem) {
                   case 'CURITIBA-PR':
-                    if (evento.local.includes('Unidade de Logística Integrada - ')) {
-                      destino = 'INDAIATUBA-SP'
-                    } else {
+                    if (evento.local.includes('Unidade de Tratamento - ')) {
                       destino = 'BAURU-SP'
+                    } else {
+                      destino = 'INDAIATUBA-SP'
                     }
                     break
                   case 'INDAIATUBA-SP':
