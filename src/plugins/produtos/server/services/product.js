@@ -147,33 +147,37 @@ module.exports = ({ strapi }) => ({
             switch (status) {
               case 'Objeto encaminhado':
 
-                if (evento.subStatus && evento.subStatus.length > 1) {
-                  const origem = evento.subStatus[0].replace('Origem: ', '')
-                    .replace('Unidade de Tratamento - ', '')
-                    .replace('Unidade de Distribuição - ', '')
-                    .replace('Unidade de Logística Integrada - ', '')
-                    .replace('Agência dos Correios - ', '')
-                    .replace('/', '-').toUpperCase()
-                    .replace(' - ', '-')
-                  const destino = evento.subStatus[1].replace('Destino: ', '')
-                    .replace('Unidade de Tratamento - ', '')
-                    .replace('Unidade de Distribuição - ', '')
-                    .replace('Unidade de Logística Integrada - ', '')
-                    .replace('Agência dos Correios - ', '')
-                    .replace('/', '-').toUpperCase()
-                    .replace(' - ', '-')
-                  status = `De ${origem} para ${destino}`
-                } else {
-                  const origem = evento.local
-                    .replace('Unidade de Tratamento - ', '')
-                    .replace('Unidade de Distribuição - ', '')
-                    .replace('Unidade de Logística Integrada - ', '')
-                    .replace('Agência dos Correios - ', '')
-                    .replace('/', '-').toUpperCase()
-                    .replace(' - ', '-')
+                const origem = evento.local
+                  .replace('Unidade de Tratamento - ', '')
+                  .replace('Unidade de Distribuição - ', '')
+                  .replace('Unidade de Logística Integrada - ', '')
+                  .replace('Agência dos Correios - ', '')
+                  .replace('/', '-').toUpperCase()
+                  .replace(' - ', '-')
 
-                  status = `Saiu de ${origem}`
+                let destino = 'BAURU-SP'
+
+
+                switch (origem) {
+                  case 'CURITIBA-PR':
+                    if (evento.local.includes('Unidade de Logística Integrada - ')) {
+                      destino = 'INDAIATUBA-SP'
+                    } else {
+                      destino = 'BAURU-SP'
+                    }
+                    break
+                  case 'INDAIATUBA-SP':
+                    destino = 'BAURU-SP'
+                    break
+                  case 'BAURU-SP':
+                    destino = 'PENAPOLIS-SP'
+                    break
+                  default:
+                    break;
                 }
+
+                status = `De ${origem} para ${destino}`
+
                 break;
               case 'Fiscalização aduaneira concluída - aguardando pagamento':
                 status = 'Aguardando Pagamento'
