@@ -49,10 +49,6 @@ module.exports = {
 
         const ptsLast = origemPts[product.lastUpdate] || 0
         const ptsStatus = origemPts[product.status] || 0
-        console.log(product.lastUpdate)
-        console.log(product.status)
-        console.log(ptsLast)
-        console.log(ptsStatus)
         // Se o status mudar
         if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (ptsStatus > ptsLast)) {
           // Atualiza
