@@ -31,37 +31,31 @@ module.exports = {
           product['status'] = "Objeto entregue ao destinatário"
         }
 
-        OrigemPts = {
-          "CURITIBA-PR": 1,
-          "INDAIATUBA-SP": 2,
-          "BAURU-SP": 3,
-          "PENAPOLIS-SP ": 4,
+        origemPts = {
+          "Objeto Postado": 1,
+          "Objeto recebido pelos Correios do Brasil": 2,
+          "Encaminhado para fiscalização aduaneira": 3,
+          "Aguardando Pagamento": 4,
+          "Pagamento confirmado": 5,
+          "De CURITIBA-PR para INDAIATUBA-SP": 6,
+          "De CURITIBA-PR para BAURU-SP": 6,
+          "De INDAIATUBA-SP para BAURU-SP": 7,
+          "De BAURU-SP para PENAPOLIS-SP": 8,
+          "Objeto saiu para entrega ao destinatário": 9,
+          "Objeto entregue ao destinatário": 10,
         }
 
         // Se o status mudar
-        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado") {
-          let send = false
-          if (!product.status.includes('De ') && product.lastUpdate.includes('De ')) {
-            send = true
-          } else {
-            if (product.status.includes('De ') && product.lastUpdate.includes('De ')) {
-              if (OrigemPts[product.lastUpdate.split(' ')[1]] > OrigemPts[product.status.split(' ')[1]]) {
-                send = true
-              }
-            }
-          }
+        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (origemPts[product.lastUpdate] > origemPts[product.status])) {
+          // Atualiza
+          await strapi.entityService.update('plugin::produtos.product', product.id, {
+            data: {
+              lastUpdate: product.status,
+            },
+          })
 
-          if (send) {
-            // Atualiza
-            await strapi.entityService.update('plugin::produtos.product', product.id, {
-              data: {
-                lastUpdate: product.status,
-              },
-            })
-
-            // Manda pro telegram
-            await strapi.service('plugin::produtos.product').telegram(product);
-          }
+          // Manda pro telegram
+          await strapi.service('plugin::produtos.product').telegram(product);
         }
       })
     },
