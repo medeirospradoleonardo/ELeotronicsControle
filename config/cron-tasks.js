@@ -31,17 +31,37 @@ module.exports = {
           product['status'] = "Objeto entregue ao destinatário"
         }
 
+        OrigemPts = {
+          "CURITIBA-PR": 1,
+          "INDAIATUBA-SP": 2,
+          "BAURU-SP": 3,
+          "PENAPOLIS-SP ": 4,
+        }
+
         // Se o status mudar
         if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado") {
-          // Atualiza
-          await strapi.entityService.update('plugin::produtos.product', product.id, {
-            data: {
-              lastUpdate: product.status,
-            },
-          })
+          let send = false
+          if (!product.status.includes('De ') && product.lastUpdate.includes('De ')) {
+            send = true
+          } else {
+            if (product.status.includes('De ') && product.lastUpdate.includes('De ')) {
+              if (OrigemPts[product.lastUpdate.split(' ')[1]] > OrigemPts[product.status.split(' ')[1]]) {
+                send = true
+              }
+            }
+          }
 
-          // Manda pro telegram
-          await strapi.service('plugin::produtos.product').telegram(product);
+          if (send) {
+            // Atualiza
+            await strapi.entityService.update('plugin::produtos.product', product.id, {
+              data: {
+                lastUpdate: product.status,
+              },
+            })
+
+            // Manda pro telegram
+            await strapi.service('plugin::produtos.product').telegram(product);
+          }
         }
       })
     },

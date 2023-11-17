@@ -152,6 +152,7 @@ module.exports = ({ strapi }) => ({
                   .replace('Unidade de Distribuição - ', '')
                   .replace('Unidade de Logística Integrada - ', '')
                   .replace('Agência dos Correios - ', '')
+                  .replace('Destino: ', '')
                   .replace('/', '-').toUpperCase()
                   .replace(' - ', '-')
 
