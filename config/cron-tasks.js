@@ -33,6 +33,7 @@ module.exports = {
 
         origemPts = {
           "Objeto Postado": 1,
+          "Objeto Postado": 1,
           "Objeto recebido pelos Correios do Brasil": 2,
           "Encaminhado para fiscalização aduaneira": 3,
           "Aguardando Pagamento": 4,
@@ -45,8 +46,11 @@ module.exports = {
           "Objeto entregue ao destinatário": 10,
         }
 
+        const ptsLast = origemPts[product.lastUpdate] || 0
+        const ptsStatus = origemPts[product.status] || 0
+
         // Se o status mudar
-        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (origemPts[product.lastUpdate] > origemPts[product.status])) {
+        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (ptsLast > ptsStatus)) {
           // Atualiza
           await strapi.entityService.update('plugin::produtos.product', product.id, {
             data: {
