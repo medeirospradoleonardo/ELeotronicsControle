@@ -19,6 +19,22 @@ module.exports = {
       }
 
       let i = 0
+
+      const origemPts = {
+        "Objeto não encontrado": 0,
+        "Objeto Postado": 1,
+        "Objeto recebido pelos Correios do Brasil": 2,
+        "Encaminhado para fiscalização aduaneira": 3,
+        "Aguardando Pagamento": 4,
+        "Pagamento confirmado": 5,
+        "De CURITIBA-PR para INDAIATUBA-SP": 6,
+        "De CURITIBA-PR para BAURU-SP": 6,
+        "De INDAIATUBA-SP para BAURU-SP": 7,
+        "De BAURU-SP para PENAPOLIS-SP": 8,
+        "Objeto saiu para entrega ao destinatário": 9,
+        "Objeto entregue ao destinatário": 10,
+      }
+
       products.map(async (product) => {
         if (!product.delivered) {
           if (rastreios[i].eventos != null) {
@@ -31,26 +47,14 @@ module.exports = {
           product['status'] = "Objeto entregue ao destinatário"
         }
 
-        origemPts = {
-          "Objeto Postado": 1,
-          "Objeto Postado": 1,
-          "Objeto recebido pelos Correios do Brasil": 2,
-          "Encaminhado para fiscalização aduaneira": 3,
-          "Aguardando Pagamento": 4,
-          "Pagamento confirmado": 5,
-          "De CURITIBA-PR para INDAIATUBA-SP": 6,
-          "De CURITIBA-PR para BAURU-SP": 6,
-          "De INDAIATUBA-SP para BAURU-SP": 7,
-          "De BAURU-SP para PENAPOLIS-SP": 8,
-          "Objeto saiu para entrega ao destinatário": 9,
-          "Objeto entregue ao destinatário": 10,
-        }
-
         const ptsLast = origemPts[product.lastUpdate] || 0
         const ptsStatus = origemPts[product.status] || 0
-
+        console.log(product.lastUpdate)
+        console.log(product.status)
+        console.log(ptsLast)
+        console.log(ptsStatus)
         // Se o status mudar
-        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (ptsLast > ptsStatus)) {
+        if (product.status !== product.lastUpdate && product.status !== "Objeto não encontrado" && (ptsStatus > ptsLast)) {
           // Atualiza
           await strapi.entityService.update('plugin::produtos.product', product.id, {
             data: {
