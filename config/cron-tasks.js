@@ -23,16 +23,17 @@ module.exports = {
       const origemPts = {
         "Objeto não encontrado": 0,
         "Objeto Postado": 1,
-        "Objeto recebido pelos Correios do Brasil": 2,
-        "Encaminhado para fiscalização aduaneira": 3,
-        "Aguardando Pagamento": 4,
-        "Pagamento confirmado": 5,
-        "De CURITIBA-PR para INDAIATUBA-SP": 6,
-        "De CURITIBA-PR para BAURU-SP": 6,
-        "De INDAIATUBA-SP para BAURU-SP": 7,
-        "De BAURU-SP para PENAPOLIS-SP": 8,
-        "Objeto saiu para entrega ao destinatário": 9,
-        "Objeto entregue ao destinatário": 10,
+        "Informações eletrônicas enviadas para análise da autoridade aduaneira": 2,
+        "Objeto recebido pelos Correios do Brasil": 3,
+        "Encaminhado para fiscalização aduaneira": 4,
+        "Aguardando Pagamento": 5,
+        "Pagamento confirmado": 6,
+        "De CURITIBA-PR para INDAIATUBA-SP": 7,
+        "De CURITIBA-PR para BAURU-SP": 8,
+        "De INDAIATUBA-SP para BAURU-SP": 9,
+        "De BAURU-SP para PENAPOLIS-SP": 10,
+        "Objeto saiu para entrega ao destinatário": 11,
+        "Objeto entregue ao destinatário": 12,
       }
 
       products.map(async (product) => {
