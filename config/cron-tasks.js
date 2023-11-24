@@ -31,9 +31,10 @@ module.exports = {
         "De CURITIBA-PR para INDAIATUBA-SP": 7,
         "De CURITIBA-PR para BAURU-SP": 8,
         "De INDAIATUBA-SP para BAURU-SP": 9,
-        "De BAURU-SP para PENAPOLIS-SP": 10,
-        "Objeto saiu para entrega ao destinatário": 11,
-        "Objeto entregue ao destinatário": 12,
+        "De VALINHOS-SP para BAURU-SP": 10,
+        "De BAURU-SP para PENAPOLIS-SP": 11,
+        "Objeto saiu para entrega ao destinatário": 12,
+        "Objeto entregue ao destinatário": 13,
       }
 
       products.map(async (product) => {
