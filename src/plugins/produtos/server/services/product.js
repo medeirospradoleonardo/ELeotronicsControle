@@ -202,6 +202,9 @@ module.exports = ({ strapi }) => ({
               case 'Objeto está em rota de entrega':
                 status = 'Objeto saiu para entrega ao destinatário'
                 break
+              case 'Objeto Postado':
+                status = 'Objeto postado'
+                break
               default:
                 break;
             }
