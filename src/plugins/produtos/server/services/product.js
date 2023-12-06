@@ -183,6 +183,10 @@ module.exports = ({ strapi }) => ({
                       .replace(' - ', '-')
 
                     switch (origem) {
+                      case 'PAÍS':
+                        origem = 'HONG KONG'
+                        destino = 'Unidade de Tratamento Internacional-BR'
+                        break
                       case 'INDAIATUBA-SP':
                         destino = 'BAURU-SP'
                         break
