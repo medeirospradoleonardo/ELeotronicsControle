@@ -173,27 +173,30 @@ module.exports = ({ strapi }) => ({
 
                   }
                 } else {
-                  origem = evento.local
-                    .replace('Unidade de Tratamento - ', '')
-                    .replace('Unidade de Distribuição - ', '')
-                    .replace('Unidade de Logística Integrada - ', '')
-                    .replace('Agência dos Correios - ', '')
-                    .replace('/', '-').toUpperCase()
-                    .replace(' - ', '-')
+                  if (evento.local != 'Centro logístico') {
+                    origem = evento.local
+                      .replace('Unidade de Tratamento - ', '')
+                      .replace('Unidade de Distribuição - ', '')
+                      .replace('Unidade de Logística Integrada - ', '')
+                      .replace('Agência dos Correios - ', '')
+                      .replace('/', '-').toUpperCase()
+                      .replace(' - ', '-')
 
-                  switch (origem) {
-                    case 'INDAIATUBA-SP':
-                      destino = 'BAURU-SP'
-                      break
-                    case 'BAURU-SP':
-                      destino = 'PENAPOLIS-SP'
-                      break
-                    default:
-                      break;
+                    switch (origem) {
+                      case 'INDAIATUBA-SP':
+                        destino = 'BAURU-SP'
+                        break
+                      case 'BAURU-SP':
+                        destino = 'PENAPOLIS-SP'
+                        break
+                      default:
+                        break;
+                    }
+                    status = `De ${origem} para ${destino}`
+                  } else {
+                    status = 'De HONG KONG para Unidade de Tratamento Internacional-BR'
                   }
                 }
-
-                status = `De ${origem} para ${destino}`
 
                 break;
               case 'Fiscalização aduaneira concluída - aguardando pagamento':
