@@ -148,7 +148,6 @@ module.exports = ({ strapi }) => ({
               case 'Objeto encaminhado':
                 let origem = 'CURITIBA-PR'
                 let destino = 'BAURU-SP'
-
                 if (evento.local.includes('Destino: ')) {
                   destino = evento.local
                     .replace('Unidade de Tratamento - ', '')
@@ -168,10 +167,14 @@ module.exports = ({ strapi }) => ({
                     case 'PENAPOLIS-SP':
                       origem = 'BAURU-SP'
                       break
+                    case 'PAÍS':
+                      origem = 'HONG KONG'
+                      destino = 'Unidade de Tratamento Internacional-BR'
+                      break
                     default:
                       break;
-
                   }
+                  status = `De ${origem} para ${destino}`
                 } else {
                   if (evento.local != 'Centro logístico') {
                     origem = evento.local
@@ -201,7 +204,6 @@ module.exports = ({ strapi }) => ({
                     status = 'De HONG KONG para Unidade de Tratamento Internacional-BR'
                   }
                 }
-
                 break;
               case 'Fiscalização aduaneira concluída - aguardando pagamento':
                 status = 'Aguardando Pagamento'
