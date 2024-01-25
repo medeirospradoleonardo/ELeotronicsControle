@@ -1696,6 +1696,9 @@ COPY public.categories (id, name, slug, created_at, updated_at, created_by_id, u
 2	Doogee S100	doogee-s100	2023-10-05 15:40:26.541	2023-10-05 15:40:26.541	1	1
 3	Doogee S98	doogee-s98	2023-10-10 12:26:16.39	2023-10-10 12:26:16.39	1	1
 4	HOTWAV Cyber 13 Pro	hotwav-cyber-13-pro	2023-11-08 20:31:54.388	2023-11-08 20:31:54.388	1	1
+5	Doogee S110	doogee-s110	2023-11-15 02:16:58.737	2023-11-15 02:16:58.737	1	1
+6	Blackview Shark 8	blackview-shark-8	2023-11-27 18:18:49.627	2023-11-27 18:18:49.627	1	1
+7	R36S	r36-s	2024-01-17 02:34:36.481	2024-01-17 02:34:36.481	1	1
 \.
 
 
@@ -1739,19 +1742,32 @@ COPY public.i18n_locale (id, name, code, created_at, updated_at, created_by_id, 
 COPY public.products (id, name, slug, email, local, price, tax, code, price_tax, name_receiver, delivered, name_buyer, last_update, created_at, updated_at, created_by_id, updated_by_id) FROM stdin;
 3	1	1-1	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB579752952HK	\N	Vilma	t	\N	Objeto não encontrado	2023-10-05 15:42:32.728	2023-11-08 21:33:44.882	1	1
 4	2	2-1	eutojafui1@hotmail.com	Estacionamento	1100	\N	LB579944793HK	\N	Carol	t	\N	Objeto não encontrado	2023-10-05 15:42:57.498	2023-11-08 21:33:51.736	1	1
-8	4	4	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB581604229HK	\N	Camila	f	\N	De CURITIBA-PR para BAURU-SP	2023-10-18 12:57:44.408	2023-11-11 06:00:02.119	1	1
-9	1	1-3	eutojafui1@hotmail.com	Estacionamento	1400	\N	NL989345000BR	\N	Carlos	f	\N	Objeto postado	2023-11-08 20:32:20.798	2023-11-11 15:00:01.785	1	1
-10	2	2-3	eutojafui1@hotmail.com	Minha Casa	1300	\N	NL989412336BR	\N	Léo	f	\N	Objeto postado	2023-11-08 20:32:44.941	2023-11-11 15:30:01.795	1	1
-6	2	2-2	eutojafui1@hotmail.com	Vo	1100	\N	LB581604590HK	\N	Vo	f	\N	De CURITIBA-PR para BAURU-SP	2023-10-18 12:57:00.084	2023-11-12 02:30:02.434	1	1
-12	3	3-1	eutojafui1@hotmail.com	Minha Casa	1000	\N	NL998128391BR	\N	Vilma	f	\N	\N	2023-11-13 12:27:55.128	2023-11-13 12:27:55.128	1	1
-13	4	4-1	eutojafui1@hotmail.com	Estacionamento	1150	\N	NL953851463BR	\N	Carol	f	\N	\N	2023-11-13 12:28:24.404	2023-11-13 12:28:24.404	1	1
-14	5	5-2	eutojafui1@hotmail.com	Fabrício	1150	\N	NL953849867BR	\N	Fabrício	f	\N	\N	2023-11-13 12:28:46.126	2023-11-13 12:29:22.829	1	1
-15	6	6	eutojafui1@hotmail.com	Vo	1150	\N	NL953849544BR	\N	Vo	f	\N	\N	2023-11-13 12:29:55.164	2023-11-13 12:29:55.164	1	1
-16	7	7	eutojafui1@hotmail.com	Vo	1150	\N	NL953849385BR	\N	Vo	f	\N	\N	2023-11-13 12:30:31.3	2023-11-13 12:30:31.3	1	1
-17	8	8	eutojafui1@hotmail.com	Minha Casa	1150	\N	NL953849544BR	\N	Camila	f	\N	\N	2023-11-13 12:31:37.916	2023-11-13 12:31:37.916	1	1
-7	3	3	eutojafui1@hotmail.com	Vo	1100	\N	LB581600730HK	\N	Vo	f	\N	Objeto está em rota de entrega	2023-10-18 12:57:23.295	2023-11-13 14:00:02.119	1	1
-5	1	1-2	eutojafui1@hotmail.com	Fabrício	1100	\N	LB581600726HK	\N	Fabrício	f	\N	Objeto está em rota de entrega	2023-10-10 12:27:13.43	2023-11-13 14:00:02.143	1	1
-11	5	5-1	eutojafui1@hotmail.com	Minha Casa	921	\N	NB886412396BR	\N	Léo	f	\N	Pagamento confirmado	2023-11-08 20:33:13.435	2023-11-10 10:00:02.04	1	1
+11	5	5-1	eutojafui1@hotmail.com	Minha Casa	921	\N	NB886412396BR	\N	Léo	t	\N	Objeto entregue ao destinatário	2023-11-08 20:33:13.435	2023-11-18 21:36:21.669	1	1
+6	2	2-2	eutojafui1@hotmail.com	Vo	1100	\N	LB581604590HK	\N	Vo	t	\N	Objeto entregue ao destinatário	2023-10-18 12:57:00.084	2023-11-16 22:22:04.091	1	1
+27	5	5-3	eutojafui1@hotmail.com	Estacionamento	1150	\N	LB582804694HK	\N	Carlos	f	\N	Informações eletrônicas enviadas para análise da autoridade aduaneira	2023-12-20 13:32:52.088	2024-01-24 04:30:28.398	1	1
+15	6	6	eutojafui1@hotmail.com	Vo	1150	\N	NL953849544BR	\N	Vo	t	\N	Objeto entregue ao destinatário	2023-11-13 12:29:55.164	2023-11-30 22:20:12.56	1	1
+16	7	7	eutojafui1@hotmail.com	Vo	1150	\N	NL953849385BR	\N	Vo	t	\N	Objeto entregue ao destinatário	2023-11-13 12:30:31.3	2023-11-30 22:20:12.565	1	1
+17	8	8	eutojafui1@hotmail.com	Minha Casa	1150	\N	NL953849544BR	\N	Camila	t	\N	Objeto entregue ao destinatário	2023-11-13 12:31:37.916	2023-11-30 22:20:12.582	1	1
+28	9	9	eutojafui1@hotmail.com	Minha Casa	1180	\N	NC117419664BR	\N	Léo	t	\N	Objeto entregue ao destinatário	2024-01-07 01:39:36.179	2024-01-24 18:33:11.217	1	1
+5	1	1-2	eutojafui1@hotmail.com	Fabrício	1100	\N	LB581600726HK	\N	Fabrício	t	\N	Objeto entregue ao destinatário	2023-10-10 12:27:13.43	2023-11-13 18:00:13.184	1	1
+7	3	3	eutojafui1@hotmail.com	Vo	1100	\N	LB581600730HK	\N	Vo	t	\N	Objeto saiu para entrega ao destinatário	2023-10-18 12:57:23.295	2023-11-13 18:00:13.207	1	1
+25	2	2-5	leonardo_medeiros_prado@hotmail.com	Minha Casa	480	\N	LB582524663HK	\N	Léo	t	\N	Objeto entregue ao destinatário	2023-11-28 19:56:40.844	2024-01-25 00:29:47.868	1	1
+9	1	1-3	eutojafui1@hotmail.com	Estacionamento	1400	\N	NL989345000BR	\N	Carlos	t	\N	Objeto entregue ao destinatário	2023-11-08 20:32:20.798	2023-11-28 18:55:59.811	1	1
+29	1	1-7	eutojafui1@hotmail.com	Estacionamento	192	\N	NM085125366BR	\N	Carlos	f	\N	Pagamento confirmado	2024-01-17 02:35:08.587	2024-01-25 09:30:14.11	1	1
+10	2	2-3	eutojafui1@hotmail.com	Minha Casa	1300	\N	NL989412336BR	\N	Léo	t	\N	Objeto entregue ao destinatário	2023-11-08 20:32:44.941	2023-11-28 22:07:00.724	1	1
+20	3	3-2	eutojafui1@hotmail.com	Vo	1070	\N	NB950668931BR	\N	Vo	t	\N	Objeto entregue ao destinatário	2023-11-15 02:18:35.017	2023-12-29 23:55:23.425	1	1
+13	4	4-1	eutojafui1@hotmail.com	Estacionamento	1150	\N	NL953851463BR	\N	Carol	t	\N	Objeto saiu para entrega ao destinatário	2023-11-13 12:28:24.404	2023-12-01 17:19:20.592	1	1
+14	5	5-2	eutojafui1@hotmail.com	Fabrício	1150	\N	NL953849867BR	\N	Fabrício	t	\N	Objeto entregue ao destinatário	2023-11-13 12:28:46.126	2023-12-01 17:19:20.673	1	1
+24	4	4-3	eutojafui12@hotmail.com	Minha Casa	480	\N	LB582505908HK	\N	Vilma	t	\N	Objeto entregue ao destinatário	2023-11-27 18:22:30.968	2024-01-15 00:48:47.456	1	1
+21	4	4-2	eutojafui1@hotmail.com	Minha Casa	1070	\N	NB950802018BR	\N	Camila	t	\N	Objeto entregue ao destinatário	2023-11-15 02:19:16.676	2023-12-15 03:03:35.652	1	1
+19	2	2-4	eutojafui1@hotmail.com	Vo	1070	\N	NB950668928BR	\N	Vo	t	\N	Objeto entregue ao destinatário	2023-11-15 02:18:04.951	2024-01-02 16:59:33.146	1	1
+18	1	1-4	eutojafui1@hotmail.com	Fabrício	1070	\N	NB950668945BR	\N	Fabrício	t	\N	Objeto entregue ao destinatário	2023-11-15 02:17:26.264	2023-12-15 20:09:05.96	1	1
+26	1	1-6	eutojafui1@hotmail.com	Minha Casa	3400	\N	LB582636656HK	\N	Camila	t	\N	Objeto saiu para entrega ao destinatário	2023-12-06 12:26:12.969	2024-01-22 20:01:46.933	1	1
+12	3	3-1	eutojafui1@hotmail.com	Minha Casa	1000	\N	NL998128391BR	\N	Vilma	t	\N	Objeto entregue ao destinatário	2023-11-13 12:27:55.128	2023-11-30 02:25:54.878	1	1
+22	1	1-5	eutojafui1@hotmail.com	Estacionamento	480	\N	LB582505899HK	\N	Carlos	t	\N	Objeto entregue ao destinatário	2023-11-27 18:19:18.646	2024-01-15 15:46:42.282	1	1
+30	2	2-6	eutojafui1@hotmail.com	Minha Casa	3400	\N	LB583111941HK	\N	Vilma	f	\N	Objeto postado	2024-01-18 12:17:35.116	2024-01-23 12:00:29.948	1	1
+8	4	4	eutojafui1@hotmail.com	Minha Casa	1100	\N	LB581604229HK	\N	Camila	t	\N	Objeto entregue ao destinatário	2023-10-18 12:57:44.408	2023-11-18 15:58:16.986	1	1
+23	3	3-3	eutojafui236@hotmail.com	Fabrício	480	\N	LB582507532HK	\N	Fabrício	t	\N	Objeto entregue ao destinatário	2023-11-27 18:20:46.92	2024-01-16 02:26:33.249	1	1
 \.
 
 
@@ -1775,6 +1791,19 @@ COPY public.products_category_links (id, product_id, category_id, product_order)
 15	15	4	6
 16	16	4	7
 17	17	4	8
+18	18	5	1
+19	19	5	2
+20	20	5	3
+21	21	5	4
+22	22	6	1
+23	23	6	2
+24	24	6	3
+25	25	6	4
+26	26	1	1
+27	27	5	5
+28	28	4	9
+29	29	7	1
+30	30	1	2
 \.
 
 
@@ -1830,7 +1859,7 @@ COPY public.strapi_core_store_settings (id, key, value, type, environment, tag) 
 18	plugin_upload_view_configuration	{"pageSize":10,"sort":"createdAt:DESC"}	object	\N	\N
 15	plugin_content_manager_configuration_content_types::plugin::users-permissions.role	{"uid":"plugin::users-permissions.role","settings":{"bulkable":true,"filterable":true,"searchable":true,"pageSize":10,"mainField":"name","defaultSortBy":"name","defaultSortOrder":"ASC"},"metadatas":{"id":{"edit":{},"list":{"label":"id","searchable":true,"sortable":true}},"name":{"edit":{"label":"name","description":"","placeholder":"","visible":true,"editable":true},"list":{"label":"name","searchable":true,"sortable":true}},"description":{"edit":{"label":"description","description":"","placeholder":"","visible":true,"editable":true},"list":{"label":"description","searchable":true,"sortable":true}},"type":{"edit":{"label":"type","description":"","placeholder":"","visible":true,"editable":true},"list":{"label":"type","searchable":true,"sortable":true}},"permissions":{"edit":{"label":"permissions","description":"","placeholder":"","visible":true,"editable":true,"mainField":"action"},"list":{"label":"permissions","searchable":false,"sortable":false}},"users":{"edit":{"label":"users","description":"","placeholder":"","visible":true,"editable":true,"mainField":"username"},"list":{"label":"users","searchable":false,"sortable":false}},"createdAt":{"edit":{"label":"createdAt","description":"","placeholder":"","visible":false,"editable":true},"list":{"label":"createdAt","searchable":true,"sortable":true}},"updatedAt":{"edit":{"label":"updatedAt","description":"","placeholder":"","visible":false,"editable":true},"list":{"label":"updatedAt","searchable":true,"sortable":true}}},"layouts":{"list":["id","name","description","type"],"edit":[[{"name":"name","size":6},{"name":"description","size":6}],[{"name":"type","size":6},{"name":"permissions","size":6}],[{"name":"users","size":6}]]}}	object	\N	\N
 16	plugin_content_manager_configuration_content_types::plugin::i18n.locale	{"uid":"plugin::i18n.locale","settings":{"bulkable":true,"filterable":true,"searchable":true,"pageSize":10,"mainField":"name","defaultSortBy":"name","defaultSortOrder":"ASC"},"metadatas":{"id":{"edit":{},"list":{"label":"id","searchable":true,"sortable":true}},"name":{"edit":{"label":"name","description":"","placeholder":"","visible":true,"editable":true},"list":{"label":"name","searchable":true,"sortable":true}},"code":{"edit":{"label":"code","description":"","placeholder":"","visible":true,"editable":true},"list":{"label":"code","searchable":true,"sortable":true}},"createdAt":{"edit":{"label":"createdAt","description":"","placeholder":"","visible":false,"editable":true},"list":{"label":"createdAt","searchable":true,"sortable":true}},"updatedAt":{"edit":{"label":"updatedAt","description":"","placeholder":"","visible":false,"editable":true},"list":{"label":"updatedAt","searchable":true,"sortable":true}}},"layouts":{"list":["id","name","code","createdAt"],"edit":[[{"name":"name","size":6},{"name":"code","size":6}]]}}	object	\N	\N
-19	plugin_upload_metrics	{"weeklySchedule":"48 35 20 * * 3","lastWeeklyUpdate":1699486548019}	object	\N	\N
+19	plugin_upload_metrics	{"weeklySchedule":"48 35 20 * * 3","lastWeeklyUpdate":1706128548156}	object	\N	\N
 \.
 
 
@@ -2006,7 +2035,7 @@ SELECT pg_catalog.setval('public.admin_users_roles_links_id_seq', 1, true);
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.categories_id_seq', 4, true);
+SELECT pg_catalog.setval('public.categories_id_seq', 7, true);
 
 
 --
@@ -2041,14 +2070,14 @@ SELECT pg_catalog.setval('public.i18n_locale_id_seq', 1, true);
 -- Name: products_category_links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_category_links_id_seq', 17, true);
+SELECT pg_catalog.setval('public.products_category_links_id_seq', 30, true);
 
 
 --
 -- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_id_seq', 17, true);
+SELECT pg_catalog.setval('public.products_id_seq', 30, true);
 
 
 --
